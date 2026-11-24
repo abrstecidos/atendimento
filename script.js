@@ -538,13 +538,24 @@ function swatch(f, cls = '') {
       s.style.backgroundImage = `url("${url}")`;
       s.style.backgroundSize = 'cover';
       s.style.backgroundPosition = 'center';
-      const img = new Image();
-      img.alt = '';
-      img.src = url;
-      s.append(img);
     });
   }
   return s;
+}
+
+/* imagem do cartão do catálogo: um <img> simples, direto no cartão (o jeito mais garantido de aparecer no iPhone).
+   Se a foto não carregar, entra a amostra desenhada no lugar. */
+function cardImage(f) {
+  if (f.tex === 'other') return swatch(f);
+  const img = document.createElement('img');
+  img.className = 'fcard__img';
+  img.alt = '';
+  img.width = 320; img.height = 320;
+  img.decoding = 'async';
+  img.style.backgroundColor = f.c;
+  img.onerror = () => { img.replaceWith(swatch(f)); };
+  img.src = `assets/tecidos/${f.id}.jpg?v=${PHOTO_V}`;
+  return img;
 }
 
 function chipsOf(ids) {
@@ -749,7 +760,7 @@ function openCatalog(ids, { title = 'Escolha os tecidos', lead = 'Toque em um ou
     c.dataset.id = f.id;
     c.style.setProperty('--i', i);
     c.setAttribute('aria-pressed', String(state.cart.includes(f.id)));
-    c.append(swatch(f));
+    c.append(cardImage(f));
     c.insertAdjacentHTML('beforeend', `<strong>${esc(f.name)}</strong><small>${esc(f.use)}</small><span class="fcard__check">${icon('check')}</span>`);
     c.addEventListener('click', () => { haptic(); c.setAttribute('aria-pressed', String(toggleCart(f.id))); sync(); });
     grid.append(c);
