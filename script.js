@@ -1079,7 +1079,7 @@ function flowPhoto() {
 }
 
 function sendPhotoWA() {
-  const lines = ['Olá, ABRS Tecidos! 👋', ''];
+  const lines = ['Olá, ABRS Tecidos !!', ''];
   if (state.name) lines.push(`Aqui é ${state.name}${state.city ? `, de ${state.city}` : ''}.`);
   lines.push('Tenho uma foto do tecido que procuro e vou mandar aqui em seguida. 📷', 'Vocês conseguem ver se têm na loja e me passar o valor?');
   bot('Vou abrir o nosso WhatsApp com a mensagem pronta. Lá, toque no *clipe 📎* ou na *câmera 📷* e envie a foto do tecido. 👍');
