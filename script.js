@@ -14,63 +14,63 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 /* Tecidos. Foto opcional: assets/tecidos/<id>.jpg (se não existir, aparece a cor com a trama) */
 const FABRICS = [
   /* mais procurados */
-  { id: 'jeans', name: 'Jeans', use: 'calças, jaquetas, saias', c: '#3b5a85', tex: 'denim' },
-  { id: 'malha', name: 'Malha', use: 'camisetas, dia a dia', c: '#cfc8bd', tex: 'knit' },
-  { id: 'brim', name: 'Brim / Sarja', use: 'uniformes, calças de trabalho', c: '#8a7a5c', tex: 'twill' },
-  { id: 'viscose', name: 'Viscose', use: 'vestidos, blusas leves', c: '#c8342b', tex: 'print' },
-  { id: 'viscolycra', name: 'Viscolycra', use: 'vestidos e blusas com elástico', c: '#6b3d8f', tex: 'knit' },
-  { id: 'linho', name: 'Linho', use: 'camisas, calças de verão', c: '#d6c8ab', tex: 'linen' },
-  { id: 'tricoline', name: 'Tricoline', use: 'camisas, vestidos, artesanato', c: '#e9dfc8', tex: 'check' },
-  { id: 'moletom', name: 'Moletom', use: 'blusas de frio, conjuntos', c: '#8b8f96', tex: 'fleece' },
-  { id: 'cotton', name: 'Cotton', use: 'blusas e peças com elástico', c: '#e08a1e', tex: 'knit' },
-  { id: 'lycra', name: 'Lycra', use: 'moda praia e fitness', c: '#d0457a', tex: 'knit' },
-  { id: 'suplex', name: 'Suplex', use: 'legging e top fitness', c: '#138a83', tex: 'knit' },
-  { id: 'crepe', name: 'Crepe', use: 'vestidos, blusas sociais', c: '#1f4a48', tex: 'crepe' },
-  { id: 'cetim', name: 'Cetim', use: 'festa, pijamas', c: '#b8862e', tex: 'satin' },
-  { id: 'percal', name: 'Percal', use: 'lençóis e roupa de cama', c: '#e8eef2', tex: 'linen' },
-  { id: 'forro', name: 'Forro', use: 'forro de roupas e bolsas', c: '#a9b4c2', tex: 'satin' },
-  { id: 'liocel', name: 'Liocel', use: 'camisas e vestidos fluidos', c: '#7c9a8a', tex: 'satin' },
+  { id: 'jeans', name: 'Jeans', use: 'calças, jaquetas, saias', c: '#1d273b', tex: 'denim' },
+  { id: 'malha', name: 'Malha', use: 'camisetas, dia a dia', c: '#38251b', tex: 'knit' },
+  { id: 'brim', name: 'Brim / Sarja', use: 'uniformes, calças de trabalho', c: '#e0dbd3', tex: 'twill' },
+  { id: 'viscose', name: 'Viscose', use: 'vestidos, blusas leves', c: '#878e99', tex: 'print' },
+  { id: 'viscolycra', name: 'Viscolycra', use: 'vestidos e blusas com elástico', c: '#96b59c', tex: 'knit' },
+  { id: 'linho', name: 'Linho', use: 'camisas, calças de verão', c: '#a79077', tex: 'linen' },
+  { id: 'tricoline', name: 'Tricoline', use: 'camisas, vestidos, artesanato', c: '#c29c61', tex: 'check' },
+  { id: 'moletom', name: 'Moletom', use: 'blusas de frio, conjuntos', c: '#505151', tex: 'fleece' },
+  { id: 'cotton', name: 'Cotton', use: 'blusas e peças com elástico', c: '#481a22', tex: 'knit' },
+  { id: 'lycra', name: 'Lycra', use: 'moda praia e fitness', c: '#8b7a79', tex: 'knit' },
+  { id: 'suplex', name: 'Suplex', use: 'legging e top fitness', c: '#107ea9', tex: 'knit' },
+  { id: 'crepe', name: 'Crepe', use: 'vestidos, blusas sociais', c: '#ae7044', tex: 'crepe' },
+  { id: 'cetim', name: 'Cetim', use: 'festa, pijamas', c: '#8c535c', tex: 'satin' },
+  { id: 'percal', name: 'Percal', use: 'lençóis e roupa de cama', c: '#a3a191', tex: 'linen' },
+  { id: 'forro', name: 'Forro', use: 'forro de roupas e bolsas', c: '#c4a877', tex: 'satin' },
+  { id: 'liocel', name: 'Liocel', use: 'camisas e vestidos fluidos', c: '#b45c1e', tex: 'satin' },
   /* malhas */
-  { id: 'malhapv', name: 'Malha PV (fria)', use: 'camisetas, uniformes', c: '#9aa7b4', tex: 'knit' },
-  { id: 'canelada', name: 'Canelada', use: 'blusas justas, vestidos', c: '#c9876b', tex: 'knit' },
-  { id: 'ribana', name: 'Ribana', use: 'golas, punhos e barras', c: '#b3a79a', tex: 'knit' },
-  { id: 'twoway', name: 'Two way', use: 'leggings, macacões, vestidos', c: '#2d2d34', tex: 'knit' },
-  { id: 'dryfit', name: 'Dry fit', use: 'camisetas esportivas', c: '#2f7fc1', tex: 'knit' },
-  { id: 'helanca', name: 'Helanca', use: 'agasalhos, uniforme escolar', c: '#1f3f7a', tex: 'knit' },
-  { id: 'moletinho', name: 'Moletinho', use: 'conjuntos leves, meia-estação', c: '#c4b29a', tex: 'fleece' },
-  { id: 'microfibra', name: 'Microfibra', use: 'shorts, pijamas, praia', c: '#5f8f9e', tex: 'crepe' },
-  { id: 'tactel', name: 'Tactel', use: 'shorts e agasalhos', c: '#2f5d50', tex: 'crepe' },
-  { id: 'neoprene', name: 'Neoprene', use: 'jaquetas, saias, peças estruturadas', c: '#3c3c44', tex: 'fleece' },
+  { id: 'malhapv', name: 'Malha PV (fria)', use: 'camisetas, uniformes', c: '#848382', tex: 'knit' },
+  { id: 'canelada', name: 'Canelada', use: 'blusas justas, vestidos', c: '#262523', tex: 'knit' },
+  { id: 'ribana', name: 'Ribana', use: 'golas, punhos e barras', c: '#bda78f', tex: 'knit' },
+  { id: 'twoway', name: 'Two way', use: 'leggings, macacões, vestidos', c: '#ce4f2e', tex: 'knit' },
+  { id: 'dryfit', name: 'Dry fit', use: 'camisetas esportivas', c: '#1c333f', tex: 'knit' },
+  { id: 'helanca', name: 'Helanca', use: 'agasalhos, uniforme escolar', c: '#d7cabd', tex: 'knit' },
+  { id: 'moletinho', name: 'Moletinho', use: 'conjuntos leves, meia-estação', c: '#c08093', tex: 'fleece' },
+  { id: 'microfibra', name: 'Microfibra', use: 'shorts, pijamas, praia', c: '#b69f87', tex: 'crepe' },
+  { id: 'tactel', name: 'Tactel', use: 'shorts e agasalhos', c: '#272d47', tex: 'crepe' },
+  { id: 'neoprene', name: 'Neoprene', use: 'jaquetas, saias, peças estruturadas', c: '#ab2d4c', tex: 'fleece' },
   /* planos para roupa */
-  { id: 'alfaiataria', name: 'Alfaiataria', use: 'calças e blazers sociais', c: '#3a332e', tex: 'twill' },
-  { id: 'gabardine', name: 'Gabardine', use: 'calças, saias, uniformes', c: '#6e6252', tex: 'twill' },
-  { id: 'bengaline', name: 'Bengaline', use: 'calças e saias com elastano', c: '#4a3a5c', tex: 'twill' },
-  { id: 'duna', name: 'Duna', use: 'calças e vestidos fluidos', c: '#b07a5a', tex: 'crepe' },
-  { id: 'viscolinho', name: 'Viscolinho', use: 'camisas, vestidos de verão', c: '#9fb08a', tex: 'linen' },
-  { id: 'oxford', name: 'Oxford', use: 'uniformes, toalhas de mesa', c: '#5b7fa6', tex: 'twill' },
-  { id: 'popeline', name: 'Popeline', use: 'camisas, vestidos, uniformes', c: '#dfe5ea', tex: 'twill' },
-  { id: 'cambraia', name: 'Cambraia', use: 'camisas, batas, enxoval', c: '#eef0ea', tex: 'linen' },
-  { id: 'musseline', name: 'Musseline', use: 'blusas e vestidos leves', c: '#e6a5b4', tex: 'sheer' },
-  { id: 'laise', name: 'Laise', use: 'vestidos, blusas, infantil', c: '#f4f1ea', tex: 'lace' },
+  { id: 'alfaiataria', name: 'Alfaiataria', use: 'calças e blazers sociais', c: '#a08486', tex: 'twill' },
+  { id: 'gabardine', name: 'Gabardine', use: 'calças, saias, uniformes', c: '#727b73', tex: 'twill' },
+  { id: 'bengaline', name: 'Bengaline', use: 'calças e saias com elastano', c: '#9e9b93', tex: 'twill' },
+  { id: 'duna', name: 'Duna', use: 'calças e vestidos fluidos', c: '#1c233f', tex: 'crepe' },
+  { id: 'viscolinho', name: 'Viscolinho', use: 'camisas, vestidos de verão', c: '#6ba4b6', tex: 'linen' },
+  { id: 'oxford', name: 'Oxford', use: 'uniformes, toalhas de mesa', c: '#1e622d', tex: 'twill' },
+  { id: 'popeline', name: 'Popeline', use: 'camisas, vestidos, uniformes', c: '#12336b', tex: 'twill' },
+  { id: 'cambraia', name: 'Cambraia', use: 'camisas, batas, enxoval', c: '#d0cbaa', tex: 'linen' },
+  { id: 'musseline', name: 'Musseline', use: 'blusas e vestidos leves', c: '#b58b8b', tex: 'sheer' },
+  { id: 'laise', name: 'Laise', use: 'vestidos, blusas, infantil', c: '#c5c2bd', tex: 'lace' },
   /* festa */
-  { id: 'chiffon', name: 'Chiffon', use: 'blusas e vestidos de festa', c: '#d9b8c4', tex: 'sheer' },
-  { id: 'georgette', name: 'Georgette', use: 'vestidos e blusas fluidas', c: '#3f6c8a', tex: 'crepe' },
-  { id: 'organza', name: 'Organza', use: 'festa, noivas, laços', c: '#e8dcc0', tex: 'sheer' },
-  { id: 'renda', name: 'Renda', use: 'vestidos, blusas, lingerie', c: '#f2ece2', tex: 'lace' },
-  { id: 'tule', name: 'Tule', use: 'saias de festa, véus', c: '#f1d6dc', tex: 'sheer' },
-  { id: 'veludo', name: 'Veludo', use: 'festa, inverno, decoração', c: '#6d1f3a', tex: 'velvet' },
-  { id: 'paete', name: 'Paetê', use: 'festa, fantasias, Carnaval', c: '#b9a36a', tex: 'sequin' },
-  { id: 'jacquard', name: 'Jacquard', use: 'vestidos, saias, decoração', c: '#8c6a3c', tex: 'check' },
+  { id: 'chiffon', name: 'Chiffon', use: 'blusas e vestidos de festa', c: '#7c687c', tex: 'sheer' },
+  { id: 'georgette', name: 'Georgette', use: 'vestidos e blusas fluidas', c: '#885136', tex: 'crepe' },
+  { id: 'organza', name: 'Organza', use: 'festa, noivas, laços', c: '#3f6fcc', tex: 'sheer' },
+  { id: 'renda', name: 'Renda', use: 'vestidos, blusas, lingerie', c: '#4a2920', tex: 'lace' },
+  { id: 'tule', name: 'Tule', use: 'saias de festa, véus', c: '#777881', tex: 'sheer' },
+  { id: 'veludo', name: 'Veludo', use: 'festa, inverno, decoração', c: '#574939', tex: 'velvet' },
+  { id: 'paete', name: 'Paetê', use: 'festa, fantasias, Carnaval', c: '#664075', tex: 'sequin' },
+  { id: 'jacquard', name: 'Jacquard', use: 'vestidos, saias, decoração', c: '#4f706c', tex: 'check' },
   /* inverno, casa e artesanato */
-  { id: 'plush', name: 'Plush', use: 'pijamas, mantas, bichinhos', c: '#d8c3b0', tex: 'fleece' },
-  { id: 'soft', name: 'Soft', use: 'mantas, roupões, pijamas', c: '#a3b8c9', tex: 'fleece' },
-  { id: 'suede', name: 'Suede', use: 'jaquetas, saias, bolsas', c: '#9a6a44', tex: 'fleece' },
-  { id: 'corino', name: 'Corino', use: 'bolsas, jaquetas, estofados', c: '#2b2420', tex: 'crepe' },
-  { id: 'lona', name: 'Lona', use: 'bolsas, sacolas, estofados', c: '#b8a57e', tex: 'linen' },
-  { id: 'algodaocru', name: 'Algodão cru', use: 'artesanato, sacolas, moldes', c: '#e4d8bd', tex: 'linen' },
-  { id: 'voil', name: 'Voil', use: 'cortinas, blusas leves', c: '#f3f3ef', tex: 'sheer' },
-  { id: 'chita', name: 'Chita', use: 'festa junina, decoração', c: '#d63a3a', tex: 'print' },
-  { id: 'feltro', name: 'Feltro', use: 'artesanato, enfeites', c: '#3f8f4f', tex: 'fleece' }
+  { id: 'plush', name: 'Plush', use: 'pijamas, mantas, bichinhos', c: '#898b8b', tex: 'fleece' },
+  { id: 'soft', name: 'Soft', use: 'mantas, roupões, pijamas', c: '#dadadb', tex: 'fleece' },
+  { id: 'suede', name: 'Suede', use: 'jaquetas, saias, bolsas', c: '#927138', tex: 'fleece' },
+  { id: 'corino', name: 'Corino', use: 'bolsas, jaquetas, estofados', c: '#1b1b1b', tex: 'crepe' },
+  { id: 'lona', name: 'Lona', use: 'bolsas, sacolas, estofados', c: '#aea190', tex: 'linen' },
+  { id: 'algodaocru', name: 'Algodão cru', use: 'artesanato, sacolas, moldes', c: '#ccc3b1', tex: 'linen' },
+  { id: 'voil', name: 'Voil', use: 'cortinas, blusas leves', c: '#754d9a', tex: 'sheer' },
+  { id: 'chita', name: 'Chita', use: 'festa junina, decoração', c: '#2b5fc9', tex: 'print' },
+  { id: 'feltro', name: 'Feltro', use: 'artesanato, enfeites', c: '#415f9a', tex: 'fleece' }
 ];
 /* tecidos que a cliente escreve (não estão na lista) */
 function addCustomFabric(name) {
@@ -194,7 +194,13 @@ function saveOrder() {
   ['cart', 'purchase', 'format', 'qty'].forEach((k) => store.set(k, state[k]));
   store.set('custom', FABRICS.filter((f) => f.custom && state.cart.includes(f.id)).map((f) => f.name));
 }
-function resetOrder() { state.cart = []; state.purchase = ''; state.format = ''; state.qty = ''; state.notes = []; state.project = ''; saveOrder(); updateCart(false); }
+/* código curto da consulta (sem letras/números que confundem: 0/O, 1/I/L); novo a cada consulta */
+function consultaCode() {
+  let c = store.get('code', '');
+  if (!c) { const A = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; c = Array.from({ length: 4 }, () => A[Math.floor(Math.random() * A.length)]).join(''); store.set('code', c); }
+  return c;
+}
+function resetOrder() { store.set('code', ''); state.cart = []; state.purchase = ''; state.format = ''; state.qty = ''; state.notes = []; state.project = ''; saveOrder(); updateCart(false); }
 
 /* ---------------- ELEMENTOS ---------------- */
 const $ = (id) => document.getElementById(id);
@@ -265,25 +271,27 @@ function getOrigin() {
 }
 function waUrl(lines) {
   const origin = getOrigin();
-  const text = [...lines, ...(origin ? ['', `(Origem: ${origin})`] : [])].join('\n');
+  const text = [...lines, ...(origin ? ['', `-- origem: ${origin}`] : [])].join('\n');
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 }
 
+/* mensagem que chega no WhatsApp da loja (modelo definido pelo Daniel, sem emojis) */
 function orderLines() {
-  const L = ['Olá, ABRS Tecidos! 👋', ''];
-  if (state.name) L.push(state.city ? `Me chamo ${state.name} e sou de ${state.city}.` : `Me chamo ${state.name}.`);
-  if (state.cart.length) {
-    const what = state.cart.map((id) => fabric(id).name).join(', ');
-    const how = !state.purchase ? '' : state.purchase === 'Ainda estou avaliando' ? ', a princípio ainda estou avaliando a forma de compra' : `, a princípio no ${state.purchase.toLowerCase()}`;
-    const det = [state.format && `formato: ${state.format}`, state.qty && `quantidade aproximada: ${state.qty}`].filter(Boolean).join('; ');
-    L.push(`Gostaria de comprar ${what}${how}${det ? ` (${det})` : ''}.`);
-  } else {
-    L.push('Vim pelo site da ABRS Tecidos e estou procurando tecido.');
-  }
-  if (state.project) L.push(`Vou costurar: ${state.project}.`);
-  L.push('', 'Pode me mostrar o que vocês têm disponível e os valores?');
-  if (state.company) L.push('', `Empresa / ateliê: ${state.company}`);
-  state.notes.forEach((n) => L.push('', `Observação: ${n}`));
+  const L = ['Olá, ABRS Tecidos!!', state.cart.length ? 'Vim pelo site e gostaria de fazer uma consulta.' : 'Vim pelo site e estou procurando tecido.'];
+  const block = (title, rows) => { rows = rows.filter(Boolean); if (rows.length) L.push('', `| *${title}*`, ...rows); };
+  if (state.cart.length) L.push('', state.name ? `Me chamo ${state.name} e gostaria de estar comprando :` : 'Gostaria de estar comprando :');
+  else if (state.name) L.push('', `Me chamo ${state.name}.`);
+  block('TECIDOS', [
+    ...state.cart.map((id) => `→ ${fabric(id).name}`),
+    state.project && `> Para: ${state.project}`
+  ]);
+  block('COMO QUERO COMPRAR', [
+    state.purchase && `> Compra: ${state.purchase}`,
+    state.format && `> Formato: ${state.format}`,
+    state.qty && `> Quantidade aproximada: ${state.qty}`
+  ]);
+  block('OBSERVAÇÕES', state.notes.map((n) => `> ${n}`));
+  L.push('', '--', 'Pode me mostrar o que vocês têm disponível e os valores?');
   return L;
 }
 
@@ -311,7 +319,7 @@ window.addEventListener('pageshow', hideLaunch);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') setTimeout(hideLaunch, 600); });
 
 document.querySelectorAll('[data-wa-direct]').forEach((a) => {
-  a.href = waUrl(['Olá, ABRS Tecidos! Tudo bem?', 'Vim pelo site da ABRS Tecidos e estou procurando tecido.']);
+  a.href = waUrl(orderLines());
   a.addEventListener('click', (e) => { e.preventDefault(); launchWA(waUrl(orderLines())); });
 });
 
@@ -513,7 +521,7 @@ cartBtn.addEventListener('click', () => { haptic(); clearReplies(); summary(); }
 /* ---------------- COMPONENTES ---------------- */
 /* fotos dos tecidos: só entram na amostra DEPOIS de carregar (no iPhone, foto que não existe deixava a amostra em branco) */
 /* troque PHOTO_V (ex.: '2') sempre que substituir fotos, para o celular baixar as novas e não usar as guardadas */
-const PHOTO_V = '1';
+const PHOTO_V = '56';
 const photoCache = new Map(); // id -> Promise<url|null>
 function fabricPhoto(id) {
   if (!photoCache.has(id)) {
@@ -837,7 +845,7 @@ function openInfo() {
       </div></div>
     </div>
     <div class="group"><button type="button" class="row row--danger" data-act="clear"><span class="row__txt">Limpar conversa</span></button></div>
-    <div class="credit"><span>site por</span><img src="assets/beriz-tec-logo.png" alt="Beriz Tec" /></div>
+    <a class="credit credit-lockup" href="https://beriztec.github.io/beriz/" target="_blank" rel="noopener" aria-label="Site por Beriz Tec"><span class="credit__by">site por</span><img src="assets/beriz-tec-logo.png" alt="" /><span class="credit__word"><img class="credit__wm" src="assets/beriz-wordmark.png?v=1" alt="Beriz" width="59" height="16" /></span></a>
   </div>`);
   body.querySelector('[data-act="wa"]').addEventListener('click', (e) => { e.preventDefault(); closeSheet(() => launchWA(waUrl(orderLines()))); });
   body.querySelector('[data-act="share"]').addEventListener('click', share);
@@ -1079,9 +1087,9 @@ function flowPhoto() {
 }
 
 function sendPhotoWA() {
-  const lines = ['Olá, ABRS Tecidos !!', ''];
-  if (state.name) lines.push(`Aqui é ${state.name}${state.city ? `, de ${state.city}` : ''}.`);
-  lines.push('Tenho uma foto do tecido que procuro e vou mandar aqui em seguida. 📷', 'Vocês conseguem ver se têm na loja e me passar o valor?');
+  const lines = ['Olá, ABRS Tecidos!!', 'Vim pelo site e tenho uma foto do tecido que procuro.'];
+  if (state.name) lines.push('', `Me chamo ${state.name}.`);
+  lines.push('', '| *FOTO DO TECIDO*', '→ Envio a foto aqui em seguida.', '', '--', 'Vocês conseguem ver se têm na loja e me passar o valor?');
   bot('Vou abrir o nosso WhatsApp com a mensagem pronta. Lá, toque no *clipe 📎* ou na *câmera 📷* e envie a foto do tecido. 👍');
   botBlock(() => waLink('Abrir o WhatsApp', lines), { delay: 300 });
   enqueue(async () => { await sleep(900); launchWA(waUrl(lines), 'Lá, toque no <b>clipe</b> ou na <b>câmera</b> e envie a foto do tecido.'); });
@@ -1120,7 +1128,7 @@ function flowSaldos() {
     }
     replies([
       { label: 'Ver saldos no WhatsApp', kind: 'main', icon: 'wa', run: () => {
-        const lines = ['Olá, ABRS Tecidos! Tudo bem?', 'Quero ver os saldos que chegaram esta semana.', 'Pode me mandar as fotos e os valores?'];
+        const lines = ['Olá, ABRS Tecidos!!', 'Vim pelo site e quero ver os saldos que chegaram esta semana.', '', '--', 'Pode me mandar as fotos e os valores?'];
         botBlock(() => waLink('Abrir o WhatsApp', lines), { delay: 300 });
         enqueue(async () => { await sleep(500); launchWA(waUrl(lines)); });
       } },

@@ -651,3 +651,17 @@ button.row:active, a.row:active { background: #e5e5ea; }
   .app.has-sheet .screen { transform: none; border-radius: 0; }
   .story__bars span.now i { width: 100%; }
 }
+
+/* crédito "site por" Beriz: símbolo + logo escrita (mesma altura, na mesma linha) + frase embaixo, com link */
+.credit-lockup { --h: 12px; align-items: flex-start !important; text-decoration: none; color: inherit; -webkit-tap-highlight-color: transparent; transition: opacity .2s ease; }
+.side__credit.credit-lockup { --h: 13px; }
+.credit-lockup:hover { opacity: .85; }
+.credit-lockup:active { opacity: .6; }
+.credit__by { white-space: nowrap; line-height: var(--h); }
+.credit-lockup > img { display: block; height: var(--h) !important; width: auto; }
+.credit__word { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; text-align: left; }
+.credit-lockup .credit__wm { display: block; height: var(--h); width: auto; max-width: none; opacity: 1; }
+.credit__word small { margin-top: 3px; font-size: 6.5px; font-weight: 500; letter-spacing: .14em; color: #8b7f78; white-space: nowrap; }
+.side__credit .credit__word small { font-size: 7.5px; }
+.credit.credit-lockup > img { opacity: .8; }
+.side__credit.credit-lockup > img { opacity: .85; }
