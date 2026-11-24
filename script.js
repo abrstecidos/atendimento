@@ -13,27 +13,64 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 /* Tecidos. Foto opcional: assets/tecidos/<id>.jpg (se não existir, aparece a cor com a trama) */
 const FABRICS = [
+  /* mais procurados */
   { id: 'jeans', name: 'Jeans', use: 'calças, jaquetas, saias', c: '#3b5a85', tex: 'denim' },
   { id: 'malha', name: 'Malha', use: 'camisetas, dia a dia', c: '#cfc8bd', tex: 'knit' },
   { id: 'brim', name: 'Brim / Sarja', use: 'uniformes, calças de trabalho', c: '#8a7a5c', tex: 'twill' },
   { id: 'viscose', name: 'Viscose', use: 'vestidos, blusas leves', c: '#c8342b', tex: 'print' },
   { id: 'viscolycra', name: 'Viscolycra', use: 'vestidos e blusas com elástico', c: '#6b3d8f', tex: 'knit' },
   { id: 'linho', name: 'Linho', use: 'camisas, calças de verão', c: '#d6c8ab', tex: 'linen' },
-  { id: 'percal', name: 'Percal', use: 'lençóis e roupa de cama', c: '#e8eef2', tex: 'linen' },
-  { id: 'forro', name: 'Forro', use: 'forro de roupas e bolsas', c: '#a9b4c2', tex: 'satin' },
+  { id: 'tricoline', name: 'Tricoline', use: 'camisas, vestidos, artesanato', c: '#e9dfc8', tex: 'check' },
   { id: 'moletom', name: 'Moletom', use: 'blusas de frio, conjuntos', c: '#8b8f96', tex: 'fleece' },
   { id: 'cotton', name: 'Cotton', use: 'blusas e peças com elástico', c: '#e08a1e', tex: 'knit' },
   { id: 'lycra', name: 'Lycra', use: 'moda praia e fitness', c: '#d0457a', tex: 'knit' },
-  { id: 'liocel', name: 'Liocel', use: 'camisas e vestidos fluidos', c: '#7c9a8a', tex: 'satin' },
-  { id: 'tricoline', name: 'Tricoline', use: 'camisas, vestidos, artesanato', c: '#e9dfc8', tex: 'check' },
+  { id: 'suplex', name: 'Suplex', use: 'legging e top fitness', c: '#138a83', tex: 'knit' },
   { id: 'crepe', name: 'Crepe', use: 'vestidos, blusas sociais', c: '#1f4a48', tex: 'crepe' },
   { id: 'cetim', name: 'Cetim', use: 'festa, pijamas', c: '#b8862e', tex: 'satin' },
-  { id: 'alfaiataria', name: 'Alfaiataria', use: 'calças e blazers sociais', c: '#3a332e', tex: 'twill' },
-  { id: 'suplex', name: 'Suplex', use: 'legging e top fitness', c: '#138a83', tex: 'knit' },
-  { id: 'oxford', name: 'Oxford', use: 'uniformes, toalhas de mesa', c: '#5b7fa6', tex: 'twill' },
-  { id: 'tactel', name: 'Tactel', use: 'shorts e agasalhos', c: '#2f5d50', tex: 'crepe' },
+  { id: 'percal', name: 'Percal', use: 'lençóis e roupa de cama', c: '#e8eef2', tex: 'linen' },
+  { id: 'forro', name: 'Forro', use: 'forro de roupas e bolsas', c: '#a9b4c2', tex: 'satin' },
+  { id: 'liocel', name: 'Liocel', use: 'camisas e vestidos fluidos', c: '#7c9a8a', tex: 'satin' },
+  /* malhas */
+  { id: 'malhapv', name: 'Malha PV (fria)', use: 'camisetas, uniformes', c: '#9aa7b4', tex: 'knit' },
+  { id: 'canelada', name: 'Canelada', use: 'blusas justas, vestidos', c: '#c9876b', tex: 'knit' },
   { id: 'ribana', name: 'Ribana', use: 'golas, punhos e barras', c: '#b3a79a', tex: 'knit' },
-  { id: 'tule', name: 'Tule', use: 'saias de festa, véus', c: '#f1d6dc', tex: 'fleece' }
+  { id: 'twoway', name: 'Two way', use: 'leggings, macacões, vestidos', c: '#2d2d34', tex: 'knit' },
+  { id: 'dryfit', name: 'Dry fit', use: 'camisetas esportivas', c: '#2f7fc1', tex: 'knit' },
+  { id: 'helanca', name: 'Helanca', use: 'agasalhos, uniforme escolar', c: '#1f3f7a', tex: 'knit' },
+  { id: 'moletinho', name: 'Moletinho', use: 'conjuntos leves, meia-estação', c: '#c4b29a', tex: 'fleece' },
+  { id: 'microfibra', name: 'Microfibra', use: 'shorts, pijamas, praia', c: '#5f8f9e', tex: 'crepe' },
+  { id: 'tactel', name: 'Tactel', use: 'shorts e agasalhos', c: '#2f5d50', tex: 'crepe' },
+  { id: 'neoprene', name: 'Neoprene', use: 'jaquetas, saias, peças estruturadas', c: '#3c3c44', tex: 'fleece' },
+  /* planos para roupa */
+  { id: 'alfaiataria', name: 'Alfaiataria', use: 'calças e blazers sociais', c: '#3a332e', tex: 'twill' },
+  { id: 'gabardine', name: 'Gabardine', use: 'calças, saias, uniformes', c: '#6e6252', tex: 'twill' },
+  { id: 'bengaline', name: 'Bengaline', use: 'calças e saias com elastano', c: '#4a3a5c', tex: 'twill' },
+  { id: 'duna', name: 'Duna', use: 'calças e vestidos fluidos', c: '#b07a5a', tex: 'crepe' },
+  { id: 'viscolinho', name: 'Viscolinho', use: 'camisas, vestidos de verão', c: '#9fb08a', tex: 'linen' },
+  { id: 'oxford', name: 'Oxford', use: 'uniformes, toalhas de mesa', c: '#5b7fa6', tex: 'twill' },
+  { id: 'popeline', name: 'Popeline', use: 'camisas, vestidos, uniformes', c: '#dfe5ea', tex: 'twill' },
+  { id: 'cambraia', name: 'Cambraia', use: 'camisas, batas, enxoval', c: '#eef0ea', tex: 'linen' },
+  { id: 'musseline', name: 'Musseline', use: 'blusas e vestidos leves', c: '#e6a5b4', tex: 'sheer' },
+  { id: 'laise', name: 'Laise', use: 'vestidos, blusas, infantil', c: '#f4f1ea', tex: 'lace' },
+  /* festa */
+  { id: 'chiffon', name: 'Chiffon', use: 'blusas e vestidos de festa', c: '#d9b8c4', tex: 'sheer' },
+  { id: 'georgette', name: 'Georgette', use: 'vestidos e blusas fluidas', c: '#3f6c8a', tex: 'crepe' },
+  { id: 'organza', name: 'Organza', use: 'festa, noivas, laços', c: '#e8dcc0', tex: 'sheer' },
+  { id: 'renda', name: 'Renda', use: 'vestidos, blusas, lingerie', c: '#f2ece2', tex: 'lace' },
+  { id: 'tule', name: 'Tule', use: 'saias de festa, véus', c: '#f1d6dc', tex: 'sheer' },
+  { id: 'veludo', name: 'Veludo', use: 'festa, inverno, decoração', c: '#6d1f3a', tex: 'velvet' },
+  { id: 'paete', name: 'Paetê', use: 'festa, fantasias, Carnaval', c: '#b9a36a', tex: 'sequin' },
+  { id: 'jacquard', name: 'Jacquard', use: 'vestidos, saias, decoração', c: '#8c6a3c', tex: 'check' },
+  /* inverno, casa e artesanato */
+  { id: 'plush', name: 'Plush', use: 'pijamas, mantas, bichinhos', c: '#d8c3b0', tex: 'fleece' },
+  { id: 'soft', name: 'Soft', use: 'mantas, roupões, pijamas', c: '#a3b8c9', tex: 'fleece' },
+  { id: 'suede', name: 'Suede', use: 'jaquetas, saias, bolsas', c: '#9a6a44', tex: 'fleece' },
+  { id: 'corino', name: 'Corino', use: 'bolsas, jaquetas, estofados', c: '#2b2420', tex: 'crepe' },
+  { id: 'lona', name: 'Lona', use: 'bolsas, sacolas, estofados', c: '#b8a57e', tex: 'linen' },
+  { id: 'algodaocru', name: 'Algodão cru', use: 'artesanato, sacolas, moldes', c: '#e4d8bd', tex: 'linen' },
+  { id: 'voil', name: 'Voil', use: 'cortinas, blusas leves', c: '#f3f3ef', tex: 'sheer' },
+  { id: 'chita', name: 'Chita', use: 'festa junina, decoração', c: '#d63a3a', tex: 'print' },
+  { id: 'feltro', name: 'Feltro', use: 'artesanato, enfeites', c: '#3f8f4f', tex: 'fleece' }
 ];
 /* tecidos que a cliente escreve (não estão na lista) */
 function addCustomFabric(name) {
@@ -47,15 +84,17 @@ function addCustomFabric(name) {
 /* Sequência igual ao questionário do site: como compra → formato → quantidade → contato */
 /* Segmentos: grupos de tecidos por tipo de costura (um tecido pode estar em mais de um) */
 const SEGMENTS = [
-  { id: 'casual', name: 'Dia a dia', desc: 'Camisetas, blusas, vestidos e peças básicas.', fabrics: ['malha', 'viscose', 'viscolycra', 'cotton', 'jeans', 'ribana'] },
-  { id: 'jeanswear', name: 'Jeanswear', desc: 'Calças, jaquetas, saias e bermudas.', fabrics: ['jeans', 'brim'] },
-  { id: 'social', name: 'Social e alfaiataria', desc: 'Calças sociais, blazers, camisas e vestidos arrumados.', fabrics: ['alfaiataria', 'crepe', 'linho', 'liocel', 'tricoline'] },
-  { id: 'fitness', name: 'Fitness e praia', desc: 'Leggings, tops, maiôs, biquínis e shorts esportivos.', fabrics: ['suplex', 'lycra', 'cotton', 'tactel'] },
-  { id: 'uniformes', name: 'Uniformes', desc: 'Uniformes, jalecos, calças e camisas de trabalho.', fabrics: ['brim', 'oxford', 'tricoline', 'malha'] },
-  { id: 'inverno', name: 'Inverno', desc: 'Blusas de frio, conjuntos e agasalhos.', fabrics: ['moletom', 'ribana', 'malha'] },
-  { id: 'festa', name: 'Festa e noite', desc: 'Vestidos de festa, saias e pijamas.', fabrics: ['cetim', 'crepe', 'tule', 'viscose'] },
-  { id: 'casa', name: 'Cama, mesa e artesanato', desc: 'Lençóis, fronhas, toalhas de mesa e artesanato.', fabrics: ['percal', 'tricoline', 'oxford', 'linho'] },
-  { id: 'acabamentos', name: 'Forros e acabamentos', desc: 'Forro de roupas e bolsas, golas, punhos e barras.', fabrics: ['forro', 'ribana', 'tule'] }
+  { id: 'casual', name: 'Dia a dia', desc: 'Camisetas, blusas, vestidos e peças básicas.', fabrics: ['malha', 'viscose', 'viscolycra', 'cotton', 'malhapv', 'canelada', 'viscolinho', 'musseline', 'jeans', 'ribana'] },
+  { id: 'jeanswear', name: 'Jeanswear', desc: 'Calças, jaquetas, saias e bermudas.', fabrics: ['jeans', 'brim', 'bengaline', 'gabardine'] },
+  { id: 'social', name: 'Social e alfaiataria', desc: 'Calças sociais, blazers, camisas e vestidos arrumados.', fabrics: ['alfaiataria', 'gabardine', 'bengaline', 'crepe', 'duna', 'linho', 'viscolinho', 'liocel', 'tricoline', 'popeline'] },
+  { id: 'fitness', name: 'Fitness e praia', desc: 'Leggings, tops, maiôs, biquínis e shorts esportivos.', fabrics: ['suplex', 'lycra', 'twoway', 'dryfit', 'cotton', 'tactel', 'microfibra', 'neoprene'] },
+  { id: 'uniformes', name: 'Uniformes', desc: 'Uniformes, jalecos, calças e camisas de trabalho.', fabrics: ['brim', 'gabardine', 'oxford', 'popeline', 'tricoline', 'malhapv', 'helanca', 'dryfit'] },
+  { id: 'inverno', name: 'Inverno', desc: 'Blusas de frio, conjuntos, pijamas e agasalhos.', fabrics: ['moletom', 'moletinho', 'plush', 'soft', 'veludo', 'suede', 'helanca', 'ribana'] },
+  { id: 'festa', name: 'Festa e noite', desc: 'Vestidos de festa, noivas, saias e pijamas.', fabrics: ['cetim', 'crepe', 'chiffon', 'georgette', 'organza', 'renda', 'tule', 'veludo', 'paete', 'jacquard'] },
+  { id: 'infantil', name: 'Infantil e bebê', desc: 'Roupinhas, enxoval, pijamas e mantas.', fabrics: ['malha', 'cotton', 'tricoline', 'cambraia', 'laise', 'soft', 'plush', 'moletinho'] },
+  { id: 'casa', name: 'Cama, mesa e decoração', desc: 'Lençóis, fronhas, toalhas de mesa, cortinas e almofadas.', fabrics: ['percal', 'tricoline', 'oxford', 'linho', 'voil', 'jacquard', 'veludo', 'chita'] },
+  { id: 'artesanato', name: 'Artesanato, bolsas e acessórios', desc: 'Bolsas, sacolas, enfeites, moldes e personalizados.', fabrics: ['algodaocru', 'lona', 'corino', 'feltro', 'chita', 'tricoline', 'suede', 'neoprene'] },
+  { id: 'acabamentos', name: 'Forros e acabamentos', desc: 'Forro de roupas e bolsas, golas, punhos e barras.', fabrics: ['forro', 'ribana', 'tule', 'organza'] }
 ];
 
 const PURCHASE = [
@@ -1100,10 +1139,17 @@ function flowDirect() {
 /* ---------------- TEXTO LIVRE (o cliente digita) ---------------- */
 /* palavras (sem acento, minúsculas) que ativam cada tecido / peça */
 const FABRIC_KEYS = {
-  jeans: ['jeans', 'denim'], brim: ['brim', 'sarja'], malha: ['malha'], viscose: ['viscose '], viscolycra: ['viscolycra', 'viscolaica'],
-  linho: ['linho'], moletom: ['moletom', 'moleton'], tricoline: ['tricoline'], alfaiataria: ['alfaiataria'], crepe: ['crepe'],
+  jeans: ['jeans', 'denim'], brim: ['brim', 'sarja'], malha: ['malha '], viscose: ['viscose '], viscolycra: ['viscolycra', 'viscolaica'],
+  linho: [' linho'], moletom: ['moletom ', 'moleton '], tricoline: ['tricoline'], alfaiataria: ['alfaiataria'], crepe: ['crepe'],
   cetim: ['cetim'], suplex: ['suplex'], cotton: ['cotton'], percal: ['percal'], forro: ['forro'], lycra: [' lycra', 'licra'],
-  liocel: ['liocel', 'lyocell', 'tencel'], oxford: ['oxford'], tactel: ['tactel'], ribana: ['ribana'], tule: [' tule']
+  liocel: ['liocel', 'lyocell', 'tencel'], oxford: ['oxford'], tactel: ['tactel'], ribana: ['ribana'], tule: [' tule'],
+  malhapv: ['malha pv', ' pv ', 'malha fria'], canelada: ['canelad'], twoway: ['two way', 'twoway'], dryfit: ['dry fit', 'dryfit'],
+  helanca: ['helanca'], moletinho: ['moletinho'], microfibra: ['microfibra'], neoprene: ['neoprene', 'neopreme'],
+  gabardine: ['gabardine'], bengaline: ['bengaline'], duna: [' duna'], viscolinho: ['viscolinho'], popeline: ['popeline'],
+  cambraia: ['cambraia'], musseline: ['musseline', 'musselina'], laise: ['laise', 'lese'], chiffon: ['chiffon', 'chifon'],
+  georgette: ['georgette', 'georgete'], organza: ['organza'], renda: ['renda'], veludo: ['veludo'], paete: ['paete'],
+  jacquard: ['jacquard', 'jacar'], plush: ['plush'], soft: [' soft'], suede: ['suede'], corino: ['corino', 'couro sintetico', 'courino'],
+  lona: [' lona'], algodaocru: ['algodao cru'], voil: [' voil', ' voal'], chita: ['chita'], feltro: ['feltro']
 };
 const PROJECT_KEYS = {
   vestido: ['vestido'], calca: ['calca'], camiseta: ['camiseta', 'blusa', 'blusinha'], fitness: ['fitness', 'legging', 'academia', 'praia', 'biquini'],

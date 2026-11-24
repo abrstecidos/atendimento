@@ -316,6 +316,10 @@ button { font: inherit; color: inherit; }
 .sw--crepe { --tex: radial-gradient(rgba(0,0,0,.22) 1px, transparent 1.5px); --ts: 4px 4px; }
 .sw--satin { --tex: linear-gradient(120deg, transparent 15%, rgba(255,255,255,.5) 40%, transparent 60%, rgba(255,255,255,.25) 80%, transparent); }
 .sw--print { --tex: radial-gradient(circle at 30% 30%, #f6c98d 0 5px, transparent 6px), radial-gradient(circle at 70% 70%, #fff 0 3px, transparent 4px); --ts: 28px 28px; }
+.sw--sheer { --tex: repeating-linear-gradient(90deg, rgba(255,255,255,.28) 0 1px, transparent 1px 4px), linear-gradient(160deg, rgba(255,255,255,.5), transparent 60%); }
+.sw--lace { --tex: radial-gradient(circle, transparent 0 3px, rgba(120,100,80,.28) 3.5px 4.5px, transparent 5px); --ts: 13px 13px; }
+.sw--velvet { --tex: linear-gradient(115deg, rgba(0,0,0,.28), rgba(255,255,255,.2) 45%, rgba(0,0,0,.32)); }
+.sw--sequin { --tex: radial-gradient(circle at 35% 35%, rgba(255,255,255,.95) 0 1.4px, rgba(255,255,255,.3) 2.6px, transparent 4px); --ts: 9px 9px; }
 .sw--other { background: #efe6da; display: grid; place-items: center; color: var(--brown); }
 .sw--other .ico { width: 34px; height: 34px; }
 
