@@ -257,7 +257,6 @@ button { font: inherit; color: inherit; }
   margin-top: 10px; padding: 7px 10px 5px 11px; border-radius: 17px;
   font-size: calc(18px * var(--fs)); line-height: 1.36;
   box-shadow: 0 1px .5px rgba(0,0,0,.13);
-  backface-visibility: hidden;
   animation: bubbleInL .42s cubic-bezier(.2, .9, .25, 1) both; transform-origin: 0 100%;
   overflow-wrap: anywhere;
 }
@@ -482,7 +481,7 @@ button { font: inherit; color: inherit; }
 .fcard__check .ico { width: 16px; height: 16px; }
 .fcard[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--wa), 0 8px 20px -8px rgba(14,138,67,.5); }
 .fcard[aria-pressed="true"] .fcard__check { background: var(--wa); color: #fff; box-shadow: none; transform: scale(1.1); }
-.sheet.is-page { transform-origin: 0% 50%; backface-visibility: hidden; }
+.sheet.is-page { transform-origin: 0% 50%; }
 .sheet__curl { position: absolute; inset: 0; z-index: 5; pointer-events: none; border-radius: inherit;
   background: linear-gradient(90deg, rgba(0,0,0,.22), rgba(0,0,0,.05) 7%, rgba(255,255,255,.55) 11%, transparent 20%, transparent 80%, rgba(0,0,0,.06)); }
 /* cartão "Outro tecido": escrever o nome */

@@ -512,6 +512,8 @@ cartBtn.addEventListener('click', () => { haptic(); clearReplies(); summary(); }
 
 /* ---------------- COMPONENTES ---------------- */
 /* fotos dos tecidos: só entram na amostra DEPOIS de carregar (no iPhone, foto que não existe deixava a amostra em branco) */
+/* troque PHOTO_V (ex.: '2') sempre que substituir fotos, para o celular baixar as novas e não usar as guardadas */
+const PHOTO_V = '1';
 const photoCache = new Map(); // id -> Promise<url|null>
 function fabricPhoto(id) {
   if (!photoCache.has(id)) {
@@ -519,7 +521,7 @@ function fabricPhoto(id) {
       const probe = new Image();
       probe.onload = () => res(probe.naturalWidth ? probe.src : null);
       probe.onerror = () => res(null);
-      probe.src = `assets/tecidos/${id}.jpg`;
+      probe.src = `assets/tecidos/${id}.jpg?v=${PHOTO_V}`;
     }));
   }
   return photoCache.get(id);
@@ -533,6 +535,9 @@ function swatch(f, cls = '') {
   else {
     fabricPhoto(f.id).then((url) => {
       if (!url) return;
+      s.style.backgroundImage = `url("${url}")`;
+      s.style.backgroundSize = 'cover';
+      s.style.backgroundPosition = 'center';
       const img = new Image();
       img.alt = '';
       img.src = url;
@@ -593,9 +598,9 @@ function openSheet({ title = '', body, foot = null, size = 'large', kind = '', o
   if (page) {
     // folha de tecido entrando pela direita: chega inclinada, desenrola e assenta
     sheet.animate([
-      { transform: 'perspective(1400px) translateX(104%) rotateY(-34deg)', opacity: .6 },
-      { transform: 'perspective(1400px) translateX(9%) rotateY(-9deg)', opacity: 1, offset: .62 },
-      { transform: 'perspective(1400px) translateX(0) rotateY(0)', opacity: 1 }
+      { transform: 'translateX(104%) skewY(-6deg) scaleX(.9)', opacity: .6 },
+      { transform: 'translateX(6%) skewY(-1.5deg) scaleX(.98)', opacity: 1, offset: .62 },
+      { transform: 'translateX(0) skewY(0) scaleX(1)', opacity: 1 }
     ], { duration: 900, easing: 'cubic-bezier(.2,.75,.25,1)' });
     const curl = document.createElement('span');
     curl.className = 'sheet__curl';
@@ -615,8 +620,8 @@ function closeSheet(after) {
   if (page) {
     // volta como folha para a direita
     const a = sheet.animate([
-      { transform: 'perspective(1400px) translateX(0) rotateY(0)' },
-      { transform: 'perspective(1400px) translateX(104%) rotateY(-26deg)', opacity: .7 }
+      { transform: 'translateX(0) skewY(0) scaleX(1)' },
+      { transform: 'translateX(104%) skewY(-5deg) scaleX(.92)', opacity: .7 }
     ], { duration: 480, easing: 'cubic-bezier(.4,0,.6,1)', fill: 'forwards' });
     let ended = false;
     const end = () => { if (ended) return; ended = true; sheet.classList.remove('is-open'); a.cancel(); finish(); };
